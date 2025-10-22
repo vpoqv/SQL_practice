@@ -174,3 +174,54 @@ SELECT title, rating FROM movies JOIN boxoffice ON movies.id = boxoffice.movie_i
 ```
 
 ### Lesson 7
+```
+SELECT column, another_column, ...
+FROM mytable
+INNER/LEFT/RIGHT/FULL JOIN another_table
+  ON mytable.id = another_table.matching_id
+WHERE condition(s)
+ORDER BY column, ... ASC/DESC
+LIMIT num_limit OFFSET num_offset;
+```
+
+Table: Buildings
+<img width="455" height="128" alt="image" src="https://github.com/user-attachments/assets/aa285ebb-99e6-4869-b733-3b679ed0c98b" />
+
+Table: Employees
+<img width="449" height="176" alt="image" src="https://github.com/user-attachments/assets/b8f61e1b-7c20-4bcf-97b0-451e3be5c4ce" />
+
+```
+# Find the list of all buildings that have employees
+SELECT DISTINCT building FROM emplyess;
+```
+
+```
+# Find the list of all buildings and their capacity
+SELECT * FROM buildings;
+```
+
+```
+# List all buildings and the distinct employee roles in each building (including empty buildings)
+SELECT DISTINCT building_name, role FROM buildings LEFT JOIN employees ON building_name = building;
+```
+
+### Lesson 8
+```
+SELECT column, another_column, ...
+FROM mytable
+WHERE column IS/IS NOT NULL
+AND/OR another_condition
+AND/OR ...;
+```
+
+```
+# Find the name and role of all employees who have not been assigned to a building
+SELECT name, role FROM employees WHERE building IS NULL;
+```
+
+```
+# Find the names of the buildings that hold no employees
+SELECT DISTINCT building_name FROM buildings LEFT JOIN employees ON building_name = building WHERE role IS NULL;
+```
+
+### Lesson 9
