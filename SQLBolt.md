@@ -225,3 +225,46 @@ SELECT DISTINCT building_name FROM buildings LEFT JOIN employees ON building_nam
 ```
 
 ### Lesson 9
+```
+SELECT column AS better_column_name, ...
+FROM a_long_widgets_table_name AS mywidgets
+INNER JOIN wedget_sales
+  ON mywidgets.id = widget_sales.widget_id;
+```
+
+```
+# List all movies and their combined sales in millions of dollars
+SELECT title, (domestic_sales + international_sales) / 1000000 AS gross_sales_millions FROM movies JOIN boxoffice ON movies.id = boxoffice.movie_id;
+```
+
+```
+# List all movies and their ratings in percent
+SELECT title, rating * 10 AS rating_percent FROM movies JOIN boxoffice ON movies.id = boxoffice.movie_id;
+```
+
+```
+# List all movies that were released on even number years
+SELECT title, year FROM movies WHERE year % 2 = 0;
+```
+
+### Lesson 10
+Function: COUNT(*), COUNT(column) / MIN(column) / MAX(column) / AVG(column) / SUM (column)
+
+```
+SELECT AGG_FUNC(column_or_expression) AS aggregate_description, ...
+FROM mytable
+WHERE constrain_expression
+GROUP BY column;
+```
+
+```
+# Find the longest time that an employee has been at the studio
+SELECT MAX(years_employed) as Max_years_employed FROM employees;
+```
+
+```
+# For each role, find the average number of years employed by employees in that role
+SELECT role, AVG(years_employed) as Average_years_employed FROM employees GROUP BY role;
+```
+
+### Lesson 11
