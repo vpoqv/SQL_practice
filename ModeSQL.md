@@ -31,3 +31,38 @@ FROM tutorial.us_housing_units
 ```
 
 ### SQL Logical Operators
+
+### SQL LIKE
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE "group_name" LIKE 'Snoop%'
+```
+
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE "group_name" ILIKE 'snoop%'
+```
+
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE artist ILIKE 'dr_ke'
+```
+
+### SQL IN
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE year_rank IN (1, 2, 3)
+```
+
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE artist IN ('Taylor Swift', 'Usher', 'Ludacris')
+```
+
+### SQL BETWEEN
+
