@@ -65,4 +65,18 @@ WHERE artist IN ('Taylor Swift', 'Usher', 'Ludacris')
 ```
 
 ### SQL BETWEEN
+```
+SELECt *
+FROM tutorial.billboard_top_100_year_end
+WHERE year_rank BETWEEN 5 AND 10
+```
+
+### SQL IS NULL
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE artist IS NULL
+```
+
+### SQL AND
 
