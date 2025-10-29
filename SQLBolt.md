@@ -292,3 +292,26 @@ SELECT role, SUM(years_employed) FROM employees GROUP BY role HAVING role = "Eng
 ```
 
 ### Lesson 12
+```
+SELECT DISTINCT column, AGG_FUNC(column_or_expression), ...
+FROM mytable
+  JOIN another_table
+    ON mytable.column = another_table.column
+  WHERE constraint_expression
+  GROUP BY column
+  HAVING constraint_expression
+  ORDER BY column ASC/DESC
+  LIMIT count OFFSET COUNT;
+```
+
+```
+# Find the number of movies each director has directed
+SELECT director, COUNT(id) as Num_movies_directed FROM movies GROUP BY director;
+```
+
+```
+# Find the total domestic and international sales that can be attributed to each director
+SELECT director, SUM(domestic_sales + international_sale) as Cumulative_sales_from_all_movies FROM movies INNER JOIN boxoffice ON movies.id = boxoffice.movie_id GROUP BY director;
+```
+
+### Lesson 13
