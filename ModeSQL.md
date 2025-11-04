@@ -79,4 +79,61 @@ WHERE artist IS NULL
 ```
 
 ### SQL AND
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE year = 2012
+AND year_rank <= 10
+AND "group_name" ILIKE '%feat$'
+```
 
+### SQL OR
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_3nd
+WHERE year = 2013
+AND ("group_name" ILIKE '%macklemore%' OR "group_name" ILKE '%timberlake%')
+```
+
+### SQL NOT
+Using NOT with < and > usually doesn't make sense
+NOT is commonly used with LIKE
+NOT is frequently used to identify non-null rows, need to include IS beforehand
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE year = 2013
+AND year_rank NOT BETWEEN 2 AND 3
+```
+
+```
+SELCET *
+FROM tutorial.billboard_top_100_year_end
+WHERE year = 2013
+AND "group_name" NOT ILKE '%macklemore%'
+```
+
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE year = 2013
+AND artist IS NOT NULL
+```
+
+### SQL ORDER BY
+```
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE year = 2013
+ORDER BY year_rank
+```
+
+comments
+```
+/* Here's a comment so long and descriptive that
+it could only fit on multiple lines */
+SELECT * -- This comment won't affect
+FROM tutorial.billboard_top_100_year_end
+WHERE year_rank <= 3
+ORDER BY year DESC, year_rank
+```
