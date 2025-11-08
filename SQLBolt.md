@@ -315,3 +315,98 @@ SELECT director, SUM(domestic_sales + international_sale) as Cumulative_sales_fr
 ```
 
 ### Lesson 13
+```
+INSERT INTO mytable
+(column, another_column, ...)
+VALUES (value_or_expr, another_value_or_expr, ...),
+      (value_or_expr_2, another_value_or_expr_2, ...), ...;
+```
+
+```
+INSERT INTO boxoffice
+(movie_id, rating, saled_in_millions)
+VALUES (1, 9.9, 283742034 / 1000000);
+```
+
+```
+# Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
+INSERT INTO movies VALUES(4, "Toy Story 4", "El Directore", 2015, 90);
+```
+
+```
+# Toy Story 4 has been released to critical acclaim! It had a rating of 8.7, and made 340 million domestically and 270 million internationally. Add the record to the BoxOffice table
+INSERT INTO boxoffice VALUES (4, 8.7, 340000000, 270000000);
+```
+
+### Lesson 14
+```
+UPDATE mytable
+SET column = value_or_expr,
+    other_column = another_value_or_expr, ...
+WHERE condition;
+```
+
+```
+# Both the title and director for Toy Story 8 is incorrect! The title should be "Toy Story 3" and it was directed by Lee Unkrich
+UPDATE movies SET title = "Toy Story 3", director = "Lee Unkrich" WHERE id = 11;
+```
+
+### Lesson 15
+```
+DELETE FROM mytable
+WHERE condition;
+```
+
+```
+# This database is getting too big, lets remove all movies that were released before 2005
+DELETE FROM movies WHERE year < 2005;
+```
+
+```
+# Andrew Stanton has also left the studio, so please remove all movies directed by him
+DELETE FROM movies WHERE director = "Andrew Stanton";
+```
+
+### Lesson 16
+```
+CREATE TABLE IF NOT EXISTS mytable (
+  column DataType TableConstraint DEFAULT default_value,
+  another_column DataType TableConstraint DEFAULT default_value, ...);
+```
+
+Data Type | Description
+------------|--------------------------------|
+INTEGER, BOOLEAN | The integer datatypes can store whole integer values like the count of a number or an age. In some implementations, the boolean value is just represented as an integer value of just 0 or 1 |
+FLOAT, DOUBLE, REAL | The floating point datatypes can store more precise numerical data like measurements or fractional values. Different types can be used depending on the floating point precision required for that value |
+CHARACTER(num_chars), VARCHAR(num_chars), TEXT | The text based datatypes can store strings and text in all sorts of locales. The distinction between the various types generally amount to underlaying efficiency of the database when working with these columns. Both the CHARACTER and VARCHAR (variable character) types are specified with the max number of characters that they can store (longer values may be truncated), so can be more efficient to store and query with big tables |
+DATE, DATETIME | SQL can also store date and time stamps to keep track of time series and event data. They can be tricky to work with especially when manipulating data across timezones |
+BLOB | Finally, SQL can store binary data in blobs right in the database. These values are often opaque to the database, so you usually have to store them with the right metadata to requery them |
+
+Constraint | Description
+------------|--------------------------------|
+PRIMARY KEY | This means that the values in this column are unique, and each value can be used to identify a single row in this table |
+AUTOINCREMENT | For integer values, this means that the value is automatically filled in and incremented with each row insertion. Not supported in all databases |
+UNIQUE | This means that the values in this column have to be unique, so you can't insert another row with the same value in this column as another row in the table. Differs from the `PRIMARY KEY` in that it doesn't have to be a key for a row in the table |
+NOT NULL | This means that the inserted value can not be `NULL` |
+CHECK (expression) | This allows you to run a more complex expression to test whether the values inserted are valid. For example, you can check that values are positive, or greater than a specific size, or start with a certain prefix, etc
+FOREIGN KEY | This is a consistency check which ensures that each value in this column corresponds to another value in a column in another table. For example, if there are two tables, one listing all Employees by ID, and another listing their payroll information, the `FOREIGN KEY` can ensure that every row in the payroll table corresponds to a valid employee in the master Employee list |
+
+```
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY,
+  title TEXT,
+  director TEXT,
+  year INTEGER,
+  length_minutes INTEGER);
+```
+
+```
+# Create a new table named Database with the following columns:
+– Name A string (text) describing the name of the database
+– Version A number (floating point) of the latest version of this database
+– Download_count An integer count of the number of times this database was downloaded
+This table has no constraints
+CREATE TABLE Database (Name TEXT, Version FLOAT, Download_count INTEGER);
+```
+
+### Lesson 17
