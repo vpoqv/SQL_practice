@@ -410,3 +410,38 @@ CREATE TABLE Database (Name TEXT, Version FLOAT, Download_count INTEGER);
 ```
 
 ### Lesson 17
+```
+ALTER TABLE mytable
+ADD column DataType OptionalTableConstraint
+  DEFAULT default_value;
+```
+
+```
+ALTER TABLE mytable
+DROP column_to_be_deleted;
+```
+
+```
+ALTER TABLE mytable
+RENAME TO new_table_name;
+```
+
+```
+# Add a column named Aspect_ratio with a FLOAT data type to store the aspect-ratio each movie was released in
+ALTER TABLE Movies ADD COLUMN Aspect_ratio FLOAT DEFAULT 2.39;
+```
+
+```
+# Add another column named Language with a TEXT data type to store the language that the movie was released in. Ensure that the default for this language is English
+ALTER TABLE Moview ADD COLUMN Language TEXT DEFAULT "English";
+```
+
+### Lesson 18
+```
+DROP TABLE IF EXISTS mytable;
+```
+
+```
+# We've sadly reached the end of our lessons, lets clean up by removing the Movies table
+DROP TABLE Movies
+```
